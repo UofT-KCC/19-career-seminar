@@ -45,21 +45,21 @@
 
       .envelope-item {
         object-fit: contain;
-      }
-
-      .envelope-center {
-        position: absolute;
         width: 80vmin;
         width: 1256px;
         height: calc(80 * 886 / 1256) vmin;
         height: 886px;
+      }
+
+      .envelope-center {
+        position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%) scale(0.6);
       }
 
       #env-back {
-        z-index: 2;
+        z-index: 5;
       }
 
       #env-front {
@@ -76,10 +76,30 @@
         object-fit: contain;
       }
 
+      #sealing-wax-container {
+        z-index: 4;
+      }
+
       #sealing-wax {
         position: relative;
-        left: 42%;
+        left: 43%;
         top: 46%;
+      }
+
+      #paper {
+        height: 2000px;
+        width: 1240px;
+        transform: translate(-50%, -80%) scale(0.6);
+        background-color: white;
+        z-index: 2;
+      }
+
+      #env-cover-container {
+        z-index: 4;
+      }
+
+      #env-top {
+        z-index: 3;
       }
     </style>
   </head>
@@ -93,20 +113,21 @@
         />
         <img
           class="envelope-item envelope-center"
-          id="env-cut"
-          src="./envelope-cut.png"
+          id="env-top"
+          src="./envelope-top.png"
         />
         <img
           class="envelope-item envelope-center"
           id="env-cut"
           src="./envelope-cut.png"
         />
-        <div class="envelope-item envelope-center">
+        <div class="envelope-item envelope-center" id="env-cover-container">
           <img src="./envelope-cover.png" id="env-cover" />
         </div>
-        <div class="enveolope-item envelope-center">
+        <div class="envelope-item envelope-center" id="sealing-wax-container">
           <img src="./sealing-wax.png" id="sealing-wax" />
         </div>
+        <div class="envelope-center" id="paper"></div>
       </div>
     </section>
 
@@ -115,7 +136,9 @@
       const section = document.querySelector(".envelope-section");
       const envBack = document.getElementById("env-back");
       const envCover = document.getElementById("env-cover");
+      const envCoverContainer = document.getElementById("env-cover-container");
       const sealingWax = document.getElementById("sealing-wax");
+      const paper = document.getElementById("paper");
 
       function onScroll() {
         const sectionRect = section.getBoundingClientRect();
@@ -158,6 +181,25 @@
         }
         const coverRotateAngle = coverProgress * 180;
         envCover.style.transform = `rotateX(${coverRotateAngle}deg)`;
+
+        // env-cover가 90도 이상이면 z-index 1로 낮춤
+        if (coverRotateAngle >= 90) {
+          envCoverContainer.style.zIndex = "1";
+        } else {
+          envCoverContainer.style.zIndex = "3";
+        }
+
+        // paper opacity: env-cover가 90도~180도 사이에서 0 → 1
+        let paperOpacity = 0;
+        if (coverRotateAngle < 90) {
+          paperOpacity = 0;
+        } else if (coverRotateAngle >= 180) {
+          paperOpacity = 1;
+        } else {
+          // 90~180도: 0 → 1
+          paperOpacity = (coverRotateAngle - 90) / 90;
+        }
+        paper.style.opacity = paperOpacity;
       }
 
       window.addEventListener("scroll", onScroll);
