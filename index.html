@@ -456,8 +456,8 @@
 
       .after-paper-background {
         width: 0%;
-        min-height: 250vmin;
-        height: 200vmin;
+        min-height: 250vh;
+        height: 200vh;
         background: radial-gradient(circle at top, #0a4c9c, #021933);
       }
     </style>
@@ -619,22 +619,6 @@
       // 모바일 체크
       const isMobile = window.innerWidth <= 768;
 
-      // #paper 높이에 따라 envelope-section 높이 조정
-      function adjustSectionHeight() {
-        const paperHeight = paper.offsetHeight;
-        const scaledPaperHeight = paperHeight * 0.6; // scale(0.6) 적용된 높이
-        const minHeightVmin = window.innerHeight * 3.5; // 350vmin을 vh로 계산 (대략 350vh)
-        
-        if (scaledPaperHeight > minHeightVmin) {
-          // paper의 실제 높이가 350vmin보다 크면 section 높이 증가
-          const additionalHeight = scaledPaperHeight - minHeightVmin;
-          const newHeight = 220 + (additionalHeight / window.innerHeight * 100);
-          section.style.height = `${newHeight}vh`;
-        } else {
-          section.style.height = '220vh';
-        }
-      }
-
       function onScroll() {
         const sectionRect = section.getBoundingClientRect();
         const sectionTop = sectionRect.top;
@@ -706,14 +690,8 @@
       }
 
       window.addEventListener("scroll", onScroll);
-      window.addEventListener("load", () => {
-        adjustSectionHeight();
-        onScroll();
-      });
-      window.addEventListener("resize", () => {
-        adjustSectionHeight();
-        onScroll();
-      });
+      window.addEventListener("load", onScroll);
+      window.addEventListener("resize", onScroll);
 
       // ===== 카운트다운 타이머 (공통) =====
       const tzButtons = document.querySelectorAll(".tz-pill");
