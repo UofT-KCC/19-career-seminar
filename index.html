@@ -2,25 +2,13 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UTKCC Career Seminar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script>
-      // 모바일이면 GSAP 로드 (1400px 이하)
-      if (window.innerWidth <= 1400) {
-        document.write(
-          '<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"><\/script>'
-        );
-        document.write(
-          '<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"><\/script>'
-        );
-      }
-    </script>
     <style>
       * {
         box-sizing: border-box;
@@ -33,97 +21,106 @@
           "Noto Sans KR", sans-serif;
         background: radial-gradient(circle at top, #0a4c9c, #021933);
         color: #f3f6ff;
+        width: 100svw;
+        min-height: 100dvh;
+        min-height: 100svh;
+        min-height: 100vh;
       }
 
       .envelope-section {
-        height: 220vh;
         position: relative;
+        width: 100%;
+        height: 220dvh;
+        height: 220svh;
+        height: 220vh;
       }
 
-      .envelope-wrapper {
+      .envelope-img-group {
         position: sticky;
         top: 0;
+        width: 100%;
         height: 100dvh;
         height: 100svh;
         height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        perspective: 2600px;
+        transform-style: preserve-3d;
       }
 
-      .envelope-scene {
-        position: relative;
-        width: min(100vw, 1400px);
-        height: calc(min(170dvh, 1400px) * 1);
-        height: calc(min(170svh, 1400px) * 1);
-        height: calc(min(170vh, 1400px) * 1);
+      .envelope-item {
+        object-fit: contain;
+        width: 80vmin;
+        width: 1256px;
+        height: calc(80 * 886 / 1256) vmin;
+        height: 886px;
+      }
+
+      .envelope-center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.6);
+      }
+
+      #env-back {
+        z-index: 5;
+      }
+
+      #env-front {
+        z-index: 1;
+      }
+
+      #env-cover {
+        transform: translate(-50%, -50%) scale(0.6);
+        object-position: center top;
+        filter: brightness(1.15);
         transform-style: preserve-3d;
-        transform-origin: center center;
+        transform-origin: center top;
+        width: 100%;
+        object-fit: contain;
+      }
+
+      #sealing-wax-container {
+        z-index: 4;
+      }
+
+      #sealing-wax {
+        position: relative;
+        left: 43%;
+        top: 46%;
+      }
+
+      #paper {
+        width: 1240px;
+        height: max-content;
+        background: #fffdf7;
+        border-radius: 6px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        border-bottom-left-radius: 28px;
+        border-bottom-right-radius: 28px;
+        transform: translate(-50%, -80%) scale(0.6) rotateX(180deg);
+        background-color: white;
         z-index: 2;
       }
 
-      .scroll-hint {
-        position: absolute;
-        bottom: 36px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-        font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.82);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        opacity: 1;
-        pointer-events: none;
-        animation: scrollHintBounce 1.4s ease-in-out infinite;
-        transition: opacity 0.25s ease;
+      #env-cover-container {
+        z-index: 4;
       }
 
-      .scroll-hint.hidden {
-        opacity: 0;
+      #env-top {
+        z-index: 3;
       }
 
-      .scroll-hint-icon {
-        font-size: 1.4rem;
-      }
-
-      @keyframes scrollHintBounce {
-        0% {
-          transform: translateX(-50%) translateY(0);
-        }
-        50% {
-          transform: translateX(-50%) translateY(6px);
-        }
-        100% {
-          transform: translateX(-50%) translateY(0);
-        }
-      }
-      .paper-spacer {
-        width: 100%;
-        height: 200px;
-        background: transparent;
-      }
       .paper-inner {
-        width: 100%;
-        height: 100%;
-        padding: 300px 34px 20px;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        transform: translateY(0);
+        position: relative;
+        padding: 52px 16px 20px;
       }
 
       .invite-card {
         width: 100%;
-        max-width: 780px;
         background: #fffbf4;
         border-radius: 24px;
         border: 1px solid rgba(216, 203, 176, 0.7);
         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
-        padding: 40px 40px 36px;
+        padding: 20% 12px 28px;
         color: #3a3a3a;
       }
 
@@ -137,7 +134,7 @@
       }
 
       .invite-logo {
-        width: 120px;
+        width: 480px;
         height: auto;
         margin: 0 auto;
         opacity: 1;
@@ -145,7 +142,7 @@
       }
 
       .invite-badge {
-        font-size: 0.8rem;
+        font-size: 3.2rem;
         letter-spacing: 0.16em;
         text-transform: uppercase;
         color: #99907a;
@@ -154,15 +151,19 @@
 
       .invite-theme {
         font-family: "Playfair Display", "Times New Roman", serif;
-        font-size: 2.8rem;
-        letter-spacing: 0.12em;
-        margin-bottom: 10px;
+        font-size: 14rem;
+        font-style: italic;
+        letter-spacing: 0em;
+        line-height: 1em;
+        margin: 60px 0 120px;
         color: #16345c;
       }
 
       .invite-meta {
-        font-size: 0.9rem;
-        line-height: 1.6;
+        font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+        font-size: 3.2rem;
+        line-height: 1.2;
+        letter-spacing: 1;
         color: #7f6c4d;
       }
 
@@ -171,15 +172,15 @@
       }
 
       .invite-intro-ko {
-        font-size: 0.95rem;
+        font-size: 2.8rem;
         line-height: 1.7;
         color: #6b665a;
-        margin-bottom: 24px;
+        margin: 100px 0;
       }
 
       .invite-divider {
-        width: 64px;
-        height: 1px;
+        width: 256px;
+        height: 4px;
         margin: 0 auto 24px;
         background: linear-gradient(
           90deg,
@@ -190,38 +191,40 @@
       }
 
       .schedule-title {
-        font-size: 1.6rem;
+        font-size: 6.4rem;
         letter-spacing: 0.18em;
         text-transform: uppercase;
         color: #8d7a55;
-        margin-bottom: 18px;
+        margin: 80px 0 60px;
       }
 
       .schedule-list {
         display: flex;
         flex-direction: column;
-        gap: 18px;
+        gap: 0;
         margin-top: 10px;
       }
 
       .schedule-item {
         display: flex;
+        flex-direction: column;
         align-items: flex-start;
         gap: 14px;
         padding: 14px 4px;
       }
 
       .schedule-number {
-        width: 34px;
-        height: 34px;
+        width: 136px;
+        height: 136px;
         border-radius: 999px;
-        border: 1px solid #b29a70;
+        border: 4px solid #b29a70;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 600;
-        font-size: 1.05rem;
+        font-size: 4.2rem;
         color: #7b643c;
+        margin: 0 auto;
         margin-top: 4px;
         flex-shrink: 0;
         background: #fffdf7;
@@ -229,33 +232,36 @@
 
       .schedule-text-block {
         text-align: left;
+        width: 100%;
       }
 
       .schedule-heading {
-        font-size: 1.05rem;
+        font-size: 5rem;
         font-weight: 600;
         color: #3f3a32;
-        line-height: 1.4;
-        margin-bottom: 4px;
+        line-height: 1.2;
+        text-align: center;
+        margin-bottom: 20px;
       }
 
       .schedule-desc {
-        font-size: 0.9rem;
+        font-size: 2.8rem;
         font-weight: 400;
         color: #7a7466;
         line-height: 1.6;
+        text-align: center;
       }
 
       .schedule-separator {
         display: flex;
         align-items: center;
         gap: 10px;
-        padding: 2px 0 6px;
+        padding: 10px 10px 6px;
       }
 
       .schedule-line {
         flex: 1;
-        height: 2px;
+        height: 4px;
         background: #b6a27c;
       }
 
@@ -266,13 +272,13 @@
       }
 
       .schedule-logo-left {
-        width: 32px;
-        height: 32px;
+        width: 128px;
+        height: 128px;
       }
 
       .schedule-logo-right {
-        width: 32px;
-        height: 32px;
+        width: 128px;
+        height: 128px;
       }
 
       .countdown-section {
@@ -289,14 +295,14 @@
         border-radius: 999px;
         background: #f4efe4;
         border: 1px solid rgba(216, 203, 176, 0.9);
-        margin-bottom: 14px;
+        margin: 60px 0;
       }
 
       .tz-pill {
         border: none;
         background: transparent;
-        font-size: 0.8rem;
-        padding: 6px 16px;
+        font-size: 3.2rem;
+        padding: 24px 64px;
         border-radius: 999px;
         cursor: pointer;
         color: #a59a84;
@@ -312,24 +318,24 @@
       }
 
       .countdown-meta {
-        font-size: 0.86rem;
+        font-size: 4rem;
         color: #8b7a60;
-        margin-bottom: 14px;
+        margin: 20px 0 80px;
       }
 
       .countdown-grid {
         display: flex;
         justify-content: center;
-        gap: 36px;
-        margin-bottom: 16px;
+        gap: 60px;
+        margin-bottom: 60px;
       }
 
       .countdown-col {
-        min-width: 58px;
+        min-width: 160px;
       }
 
       .countdown-label {
-        font-size: 0.7rem;
+        font-size: 2.8rem;
         letter-spacing: 0.15em;
         color: #b0a187;
         margin-bottom: 4px;
@@ -337,236 +343,19 @@
 
       .countdown-value {
         font-family: "Playfair Display", "Times New Roman", serif;
-        font-size: 1.8rem;
+        font-size: 7.2rem;
         color: #333132;
       }
 
       .countdown-caption {
-        font-size: 0.88rem;
+        font-size: 3.52rem;
         color: #746a5a;
+        margin: 60px 0 100px;
       }
 
       .countdown-caption span {
         color: #c2873c;
         font-weight: 600;
-      }
-
-      @media (max-width: 768px) {
-        .countdown-grid {
-          gap: 18px;
-        }
-
-        .countdown-value {
-          font-size: 1.5rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .paper-inner {
-          padding: 52px 16px 40px;
-        }
-
-        .invite-card {
-          padding: 28px 22px 28px;
-          border-radius: 20px;
-        }
-
-        .invite-theme {
-          font-size: 2.2rem;
-        }
-      }
-
-      /* ===== PC 버전: Envelope 스타일 (기본) ===== */
-      .envelope-image {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center bottom;
-        border-radius: 6px;
-        transform: translateY(0) scale(1);
-        z-index: 1;
-      }
-
-      .envelope-cut {
-        z-index: 10;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      #env-cut {
-        transform: translateY(-10%) scale(1);
-      }
-
-      .env-body,
-      .env-flap {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center bottom;
-        display: block;
-        transform: translateY(0) scale(1);
-      }
-
-      #env-back {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      #env-front {
-        opacity: 0;
-        transform: translateY(0) scale(1);
-      }
-
-      #env-open {
-        transform: translateY(-10%) scale(1);
-        z-index: 0;
-      }
-
-      #env-bg {
-        transform: translateY(-10%) scale(1);
-        z-index: 14;
-      }
-
-      .envelope-cover {
-        position: absolute;
-        top: 42%;
-        left: 50%;
-        width: 54.5%;
-        object-fit: contain;
-        object-position: center bottom;
-        transform-style: preserve-3d;
-        transform-origin: center top;
-        transform: translate(-50%, -50%) rotateX(0deg);
-        z-index: 15;
-        transition: transform 0.6s ease-out;
-      }
-
-      .sealing-wax {
-        position: absolute;
-        width: 10%;
-        top: 47%;
-        left: 45%;
-        z-index: 100;
-        opacity: 1;
-        transition: opacity 0.4s ease-out;
-      }
-
-      .paper {
-        position: absolute;
-        left: 50%;
-        width: 53%;
-        height: max-content;
-        background: #fffdf7;
-        border-radius: 6px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-        transform: translate(-50%, -50%) scale(1) rotateX(180deg);
-        z-index: 12;
-        opacity: 0;
-        transition: opacity 0.4s ease-out;
-        overflow: hidden;
-        border-bottom-left-radius: 28px;
-        border-bottom-right-radius: 28px;
-      }
-
-      /* ===== 모바일 버전: Envelope 스타일 (1400px 이하) ===== */
-      @media (max-width: 1400px) {
-        .envelope-image {
-          object-position: center center;
-        }
-
-        .env-body,
-        .env-flap {
-          object-position: center center;
-        }
-
-        #env-cut {
-          transform: translateY(-6%) scale(1);
-        }
-
-        #env-open {
-          transform: translateY(-6%) scale(1);
-        }
-
-        #env-bg {
-          transform: translateY(-6%) scale(1);
-        }
-
-        .envelope-cover {
-          top: 45.3%;
-          width: 72.5%;
-        }
-
-        .paper {
-          position: relative;
-          top: -55%;
-          width: 65%;
-          margin-bottom: 30px;
-        }
-
-        .paper-inner {
-          position: relative;
-        }
-
-        /* Paper 내부 요소들 */
-        .invite-intro-ko {
-          font-size: 0.8rem;
-        }
-
-        .schedule-list {
-          gap: 0;
-        }
-
-        .schedule-item {
-          flex-direction: column;
-        }
-
-        .schedule-number {
-          margin: 0 auto;
-          margin-top: 4px;
-        }
-
-        .schedule-text-block {
-          width: 100%;
-        }
-
-        .schedule-heading {
-          text-align: center;
-        }
-
-        .schedule-desc {
-          font-size: 0.6rem;
-          text-align: center;
-        }
-
-        .schedule-separator {
-          padding: 10px 10px 6px;
-        }
-
-        .countdown-meta {
-          font-size: 0.7rem;
-        }
-
-        .countdown-col {
-          min-width: 20px;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .paper-inner {
-          padding: 52px 16px 20px;
-        }
-
-        .invite-card {
-          padding: 28px 12px 28px;
-        }
-
-        .invite-theme {
-          font-size: 2rem;
-        }
       }
 
       .invite-section {
@@ -648,433 +437,242 @@
 
       .after-paper-background {
         width: 0%;
-        height: 200px;
+        min-height: 250vmin;
+        height: 200vmin;
         background: radial-gradient(circle at top, #0a4c9c, #021933);
       }
     </style>
   </head>
   <body>
     <section class="envelope-section">
-      <div class="envelope-wrapper">
-        <div class="envelope-scene" id="envelope-scene">
-          <div class="envelope" id="envelope">
-            <img
-              id="env-front"
-              class="envelope-image"
-              src="images/envelope-front.png"
-              alt="Envelope front"
-            />
-            <img
-              id="env-back"
-              class="envelope-image"
-              src="images/envelope-back.png"
-              alt="Envelope back"
-            />
-            <img
-              id="env-open"
-              class="envelope-image"
-              src="images/envelope-cut.png"
-              alt="Open envelope"
-            />
-            <img
-              id="env-bg"
-              class="envelope-image"
-              src="images/envelope-cut1.png"
-              alt="Envelope Background"
-            />
-            <img
-              id="sealing-wax"
-              class="sealing-wax"
-              src="images/sealing-wax.png"
-              alt="sealing-wax"
-            />
-            <div class="paper" id="paper">
-              <div class="paper-inner">
-                <div class="invite-card">
-                  <header class="invite-header">
-                    <img
-                      src="images/utkcc-logo.png"
-                      alt="UTKCC Logo"
-                      class="invite-logo"
-                    />
-                    <p class="invite-badge">UTKCC CAREER SEMINAR</p>
-                    <h1 class="invite-theme">FAIL FORWARD</h1>
-                    <p class="invite-meta">
-                      11월 22일 오후 8시 EST · 11월 23일 오전 10시 KST<br />
-                      @Zoom
+      <div class="envelope-img-group">
+        <img
+          class="envelope-item envelope-center"
+          id="env-back"
+          src="images/envelope-back.png"
+        />
+        <img
+          class="envelope-item envelope-center"
+          id="env-top"
+          src="images/envelope-top.png"
+        />
+        <img
+          class="envelope-item envelope-center"
+          id="env-cut"
+          src="images/envelope-cut.png"
+        />
+        <div class="envelope-item envelope-center" id="env-cover-container">
+          <img src="images/envelope-cover.png" id="env-cover" />
+        </div>
+        <div class="envelope-item envelope-center" id="sealing-wax-container">
+          <img src="images/sealing-wax.png" id="sealing-wax" />
+        </div>
+        <div class="envelope-center" id="paper">
+          <div class="paper-inner">
+            <div class="invite-card">
+            <header class="invite-header">
+              <img
+                src="images/utkcc-logo.png"
+                alt="UTKCC Logo"
+                class="invite-logo"
+              />
+              <p class="invite-badge">UTKCC CAREER SEMINAR</p>
+              <h1 class="invite-theme">FAIL <br /> FORWARD</h1>
+              <p class="invite-meta">
+                11월 22일 오후 8시 EST / 11월 23일 오전 10시 KST
+                <br />
+                | @Zoom
+              </p>
+            </header>
+
+            <section class="invite-body">
+              <p class="invite-intro-ko">
+                선배님들의 진짜 이야기와 함께<br />
+                실패를 앞으로 나아가는 힘으로 바꾸는 시간을 준비했습니다.
+              </p>
+
+              <div class="invite-divider"></div>
+
+              <h2 class="schedule-title">Schedule</h2>
+              <div class="schedule-list">
+                <article class="schedule-item">
+                  <div class="schedule-number">1</div>
+                  <div class="schedule-text-block">
+                    <h3 class="schedule-heading">General Panel Side Talk</h3>
+                    <p class="schedule-desc">
+                      선배님들의 실패 경험과 <br/>그 속에서 얻은 인사이트를 나누는
+                      패널 세션
                     </p>
-                  </header>
+                  </div>
+                </article>
 
-                  <section class="invite-body">
-                    <p class="invite-intro-ko">
-                      선배님들의 진짜 이야기와 함께<br />
-                      실패를 앞으로 나아가는 힘으로 바꾸는 시간을 준비했습니다.
+                <div class="schedule-separator">
+                  <span class="schedule-line"></span>
+                  <img
+                    src="images/utkcc-logo.png"
+                    alt="UTKCC logo mark"
+                    class="schedule-logo schedule-logo-right"
+                  />
+                </div>
+
+                <article class="schedule-item">
+                  <div class="schedule-number">2</div>
+                  <div class="schedule-text-block">
+                    <h3 class="schedule-heading">
+                      Career-Specific <br/>Breakout Room
+                    </h3>
+                    <p class="schedule-desc">
+                      소규모 네트워킹과 각 분야별 Fireside Chat
                     </p>
+                  </div>
+                </article>
 
-                    <div class="invite-divider"></div>
+                <div class="schedule-separator">
+                  <img
+                    src="images/utkcc-logo.png"
+                    alt="UTKCC logo mark"
+                    class="schedule-logo schedule-logo-left"
+                  />
+                  <span class="schedule-line"></span>
+                </div>
 
-                    <h2 class="schedule-title">Schedule</h2>
-                    <div class="schedule-list">
-                      <article class="schedule-item">
-                        <div class="schedule-number">1</div>
-                        <div class="schedule-text-block">
-                          <h3 class="schedule-heading">
-                            General Panel Side Talk
-                          </h3>
-                          <p class="schedule-desc">
-                            선배님들의 실패 경험과 그 속에서 얻은 인사이트를
-                            나누는 패널 세션
-                          </p>
-                        </div>
-                      </article>
+                <article class="schedule-item">
+                  <div class="schedule-number">3</div>
+                  <div class="schedule-text-block">
+                    <h3 class="schedule-heading">Insight Talk</h3>
+                    <p class="schedule-desc">
+                      실제 사례를 바탕으로 선배님들의 조언과<br />
+                      커리어 인사이트를 들어보는 시간
+                    </p>
+                  </div>
+                </article>
 
-                      <div class="schedule-separator">
-                        <span class="schedule-line"></span>
-                        <img
-                          src="images/utkcc-logo.png"
-                          alt="UTKCC logo mark"
-                          class="schedule-logo schedule-logo-right"
-                        />
-                      </div>
+                <div class="countdown-section">
+                  <div class="timezone-toggle" aria-label="Select timezone">
+                    <button class="tz-pill active" data-tz="est">EST</button>
+                    <button class="tz-pill" data-tz="kst">KST</button>
+                  </div>
 
-                      <article class="schedule-item">
-                        <div class="schedule-number">2</div>
-                        <div class="schedule-text-block">
-                          <h3 class="schedule-heading">
-                            Career-Specific Breakout Room
-                          </h3>
-                          <p class="schedule-desc">
-                            소규모 네트워킹과 각 분야별 fireside chat으로<br />
-                            조금 더 가까이에서 이야기를 나눕니다.
-                          </p>
-                        </div>
-                      </article>
+                  <div class="countdown-meta" id="countdown-meta">
+                    2025.11.22 · 토요일 오후 8시 (EST)
+                  </div>
 
-                      <div class="schedule-separator">
-                        <img
-                          src="images/utkcc-logo.png"
-                          alt="UTKCC logo mark"
-                          class="schedule-logo schedule-logo-left"
-                        />
-                        <span class="schedule-line"></span>
-                      </div>
-
-                      <article class="schedule-item">
-                        <div class="schedule-number">3</div>
-                        <div class="schedule-text-block">
-                          <h3 class="schedule-heading">Insight Talk</h3>
-                          <p class="schedule-desc">
-                            실제 사례를 바탕으로 선배님들의 조언과<br />
-                            커리어 인사이트를 들어보는 시간
-                          </p>
-                        </div>
-                      </article>
-
-                      <div class="countdown-section">
-                        <div
-                          class="timezone-toggle"
-                          aria-label="Select timezone"
-                        >
-                          <button class="tz-pill active" data-tz="est">
-                            EST
-                          </button>
-                          <button class="tz-pill" data-tz="kst">KST</button>
-                        </div>
-
-                        <div class="countdown-meta" id="countdown-meta">
-                          2025.11.22 · 토요일 오후 8시 (EST)
-                        </div>
-
-                        <div class="countdown-grid">
-                          <div class="countdown-col">
-                            <div class="countdown-label">DAYS</div>
-                            <div class="countdown-value" id="cd-days">00</div>
-                          </div>
-                          <div class="countdown-col">
-                            <div class="countdown-label">HOUR</div>
-                            <div class="countdown-value" id="cd-hours">00</div>
-                          </div>
-                          <div class="countdown-col">
-                            <div class="countdown-label">MIN</div>
-                            <div class="countdown-value" id="cd-mins">00</div>
-                          </div>
-                          <div class="countdown-col">
-                            <div class="countdown-label">SEC</div>
-                            <div class="countdown-value" id="cd-secs">00</div>
-                          </div>
-                        </div>
-
-                        <p class="countdown-caption">
-                          세미나까지 <span id="cd-days-text">0</span>일
-                          남았습니다.
-                        </p>
-                      </div>
+                  <div class="countdown-grid">
+                    <div class="countdown-col">
+                      <div class="countdown-label">DAYS</div>
+                      <div class="countdown-value" id="cd-days">00</div>
                     </div>
-                  </section>
+                    <div class="countdown-col">
+                      <div class="countdown-label">HOUR</div>
+                      <div class="countdown-value" id="cd-hours">00</div>
+                    </div>
+                    <div class="countdown-col">
+                      <div class="countdown-label">MIN</div>
+                      <div class="countdown-value" id="cd-mins">00</div>
+                    </div>
+                    <div class="countdown-col">
+                      <div class="countdown-label">SEC</div>
+                      <div class="countdown-value" id="cd-secs">00</div>
+                    </div>
+                  </div>
+
+                  <p class="countdown-caption">
+                    세미나까지 <span id="cd-days-text">0</span>일 남았습니다.
+                  </p>
                 </div>
               </div>
-            </div>
-            <div class="paper-spacer"></div>
-            <img
-              id="env-cut"
-              class="envelope-image envelope-cut"
-              src="images/envelope-cut.png"
-              alt="Envelope cut"
-            />
-            <img
-              id="env-cover"
-              class="envelope-cover"
-              src="images/envelope-cover.png"
-              alt="Envelope cover"
-            />
+            </section>
           </div>
-        </div>
-        <div class="scroll-hint" id="scroll-hint">
-          <span>SCROLL DOWN</span>
-          <ion-icon
-            name="chevron-down-outline"
-            class="scroll-hint-icon"
-          ></ion-icon>
         </div>
       </div>
     </section>
     <section class="after-paper-background"></section>
-    <section class="content-section">
-      <div class="content-section-inner"></div>
-    </section>
 
     <script>
+      const imgGroup = document.querySelector(".envelope-img-group");
       const section = document.querySelector(".envelope-section");
-      const scene = document.getElementById("envelope-scene");
-      const paper = document.getElementById("paper");
-      const scrollHint = document.getElementById("scroll-hint");
-
-      const envFront = document.getElementById("env-front");
       const envBack = document.getElementById("env-back");
-      const envOpen = document.getElementById("env-open");
-      const envCut = document.getElementById("env-cut");
-      const envBg = document.getElementById("env-bg");
-      const sealingWax = document.getElementById("sealing-wax");
       const envCover = document.getElementById("env-cover");
+      const envCoverContainer = document.getElementById("env-cover-container");
+      const sealingWax = document.getElementById("sealing-wax");
+      const paper = document.getElementById("paper");
 
-      const isMobile = window.innerWidth <= 1400;
+      // 모바일 체크
+      const isMobile = window.innerWidth <= 768;
 
-      if (isMobile && typeof gsap !== "undefined") {
-        // ===== MOBILE: GSAP 애니메이션 =====
-        gsap.registerPlugin(ScrollTrigger);
+      function onScroll() {
+        const sectionRect = section.getBoundingClientRect();
+        const sectionTop = sectionRect.top;
+        const sectionHeight = section.offsetHeight;
+        const viewportHeight = window.innerHeight;
 
-        // Hide scroll hint on scroll
-        gsap.to(scrollHint, {
-          opacity: 0,
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "top+=50 top",
-            scrub: true,
-          },
-        });
+        // 전체 스크롤 진행도 계산 (0 ~ 1)
+        let totalProgress = -sectionTop / (sectionHeight - viewportHeight);
+        totalProgress = Math.max(0, Math.min(1, totalProgress));
 
-        // Main timeline for envelope animation
-        const mainTimeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 1,
-            pin: ".envelope-wrapper",
-          },
-        });
-
-        // Step 1: Envelope flips (0 to 40% of scroll)
-        mainTimeline.to(
-          scene,
-          { rotateX: 180, duration: 0.4, ease: "none" },
-          0
-        );
-
-        // Envelope image transitions
-        mainTimeline.to(
-          envBack,
-          { opacity: 0, duration: 0.1, ease: "none" },
-          0.2
-        );
-        mainTimeline.to(
-          envFront,
-          { opacity: 1, duration: 0.1, ease: "none" },
-          0.2
-        );
-        mainTimeline.to(
-          envFront,
-          { opacity: 0, duration: 0.05, ease: "none" },
-          0.4
-        );
-        mainTimeline.to(
-          [envOpen, envCut],
-          { opacity: 1, duration: 0.05, ease: "none" },
-          0.4
-        );
-
-        // Show elements at 90deg rotation
-        mainTimeline.to(
-          [sealingWax, envCover, envBg, paper],
-          { display: "block", duration: 0.01, ease: "none" },
-          0.2
-        );
-
-        // Step 2: Sealing wax fades
-        mainTimeline.to(
-          sealingWax,
-          { opacity: 0, duration: 0.1, ease: "none" },
-          0.27
-        );
-
-        // Step 3: Cover rotation
-        mainTimeline.to(
-          envCover,
-          {
-            rotateX: 180,
-            duration: 0.6,
-            ease: "none",
-            transformOrigin: "center top",
-            onUpdate: function () {
-              const progress = this.progress();
-              const rotation = progress * 180;
-              envCover.style.transform = `translate(-50%, -50%) rotateX(${rotation}deg)`;
-              envCover.style.zIndex = rotation >= 180 ? "11" : "15";
-            },
-          },
-          0.27
-        );
-
-        // Step 4: Paper appears
-        mainTimeline.to(
-          paper,
-          { opacity: 1, duration: 0.13, ease: "none" },
-          0.87
-        );
-
-        // Initialize
-        gsap.set([sealingWax, envCover, envBg, paper], { display: "none" });
-        gsap.set(envFront, { opacity: 0 });
-        gsap.set([envOpen, envCut], { opacity: 0 });
-        gsap.set(sealingWax, { opacity: 1 });
-        gsap.set(paper, { opacity: 0 });
-      } else {
-        // ===== PC: 스크롤 기반 애니메이션 =====
-        function onScroll() {
-          const windowHeight = window.innerHeight;
-          const totalScrollable = section.offsetHeight - windowHeight;
-          const start = section.offsetTop;
-          let raw = window.scrollY - start;
-
-          if (raw < 0) raw = 0;
-          if (raw > totalScrollable) raw = totalScrollable;
-
-          const progress = totalScrollable <= 0 ? 0 : raw / totalScrollable;
-
-          if (scrollHint) {
-            if (progress < 0.02) {
-              scrollHint.classList.remove("hidden");
-            } else {
-              scrollHint.classList.add("hidden");
-            }
-          }
-
-          const ROTATE_END = 0.4;
-          let rotatePhase = progress / ROTATE_END;
-          if (rotatePhase < 0) rotatePhase = 0;
-          if (rotatePhase > 1) rotatePhase = 1;
-
-          const rotateAngle = rotatePhase * 180;
-          scene.style.transform = `rotateX(${rotateAngle}deg)`;
-
-          let backOpacity, frontOpacity, openOpacity, cutOpacity;
-
-          if (progress < 0.2) {
-            backOpacity = 1;
-            frontOpacity = 0;
-            openOpacity = 0;
-            cutOpacity = 0;
-          } else if (progress < 0.4) {
-            backOpacity = 0;
-            frontOpacity = 1;
-            openOpacity = 0;
-            cutOpacity = 0;
-          } else {
-            backOpacity = 0;
-            frontOpacity = 0;
-            openOpacity = 1;
-            cutOpacity = 1;
-          }
-
-          envBack.style.opacity = backOpacity;
-          envFront.style.opacity = frontOpacity;
-          envOpen.style.opacity = openOpacity;
-          envCut.style.opacity = cutOpacity;
-
-          const WAX_FADE_START = 90;
-          const WAX_FADE_END = 120;
-
-          if (rotateAngle < 90) {
-            if (sealingWax) sealingWax.style.display = "none";
-            if (envCover) envCover.style.display = "none";
-            if (envBg) envBg.style.display = "none";
-            if (paper) paper.style.display = "none";
-          } else {
-            if (sealingWax) sealingWax.style.display = "block";
-            if (envCover) envCover.style.display = "block";
-            if (paper) paper.style.display = "block";
-            if (envBg) envBg.style.display = "block";
-          }
-
-          if (sealingWax) {
-            let waxOpacity = 1;
-            if (rotateAngle < WAX_FADE_START) {
-              waxOpacity = 1;
-            } else if (rotateAngle >= WAX_FADE_END) {
-              waxOpacity = 0;
-            } else {
-              waxOpacity =
-                1 -
-                (rotateAngle - WAX_FADE_START) /
-                  (WAX_FADE_END - WAX_FADE_START);
-            }
-            sealingWax.style.opacity = String(
-              Math.max(0, Math.min(1, waxOpacity))
-            );
-          }
-
-          const waxFadeThresholdProgress = (WAX_FADE_END / 180) * ROTATE_END;
-
-          let coverRotation = 0;
-          if (progress > waxFadeThresholdProgress) {
-            const coverProgress =
-              (progress - waxFadeThresholdProgress) /
-              (1 - waxFadeThresholdProgress);
-            coverRotation = coverProgress * 180;
-            if (coverRotation > 180) coverRotation = 180;
-            if (coverRotation < 0) coverRotation = 0;
-          }
-
-          envCover.style.transform = `translate(-50%, -50%) rotateX(${coverRotation}deg)`;
-
-          if (coverRotation >= 180) {
-            envCover.style.zIndex = "11";
-          } else {
-            envCover.style.zIndex = "15";
-          }
-
-          let paperOpacity = 0;
-          if (coverRotation >= 180) {
-            paperOpacity = 1;
-          }
-          paper.style.opacity = paperOpacity;
+        // 모바일에서는 부드러운 진행을 위해 easing 적용
+        if (isMobile) {
+          totalProgress =
+            totalProgress < 0.5
+              ? 2 * totalProgress * totalProgress
+              : 1 - Math.pow(-2 * totalProgress + 2, 2) / 2;
         }
 
-        window.addEventListener("scroll", onScroll);
-        window.addEventListener("load", onScroll);
-        window.addEventListener("resize", onScroll);
+        // 첫 50%: envelope-img-group 회전 (0도 ~ 180도)
+        const groupProgress = Math.min(totalProgress * 2, 1);
+        const groupRotateAngle = groupProgress * 180;
+        imgGroup.style.transform = `rotateX(${groupRotateAngle}deg)`;
+
+        // 90도 이상 회전하면 env-back 숨기기
+        if (groupRotateAngle >= 90) {
+          envBack.style.display = "none";
+        } else {
+          envBack.style.display = "block";
+        }
+
+        // sealing-wax opacity: 160~180도 사이에서 1 → 0
+        let waxOpacity = 1;
+        if (groupRotateAngle < 160) {
+          waxOpacity = 1;
+        } else if (groupRotateAngle >= 180) {
+          waxOpacity = 0;
+        } else {
+          // 160~180도: 1 → 0
+          waxOpacity = 1 - (groupRotateAngle - 160) / 20;
+        }
+        sealingWax.style.opacity = waxOpacity;
+
+        // 나머지 50%: env-cover 회전 (0도 ~ 180도)
+        let coverProgress = 0;
+        if (totalProgress > 0.5) {
+          coverProgress = (totalProgress - 0.5) * 2;
+        }
+        const coverRotateAngle = coverProgress * 180;
+        envCover.style.transform = `rotateX(${coverRotateAngle}deg)`;
+
+        // env-cover가 90도 이상이면 z-index 1로 낮춤
+        if (coverRotateAngle >= 90) {
+          envCoverContainer.style.zIndex = "1";
+        } else {
+          envCoverContainer.style.zIndex = "3";
+        }
+
+        // paper opacity: env-cover가 90도~180도 사이에서 0 → 1
+        let paperOpacity = 0;
+        if (coverRotateAngle < 90) {
+          paperOpacity = 0;
+        } else if (coverRotateAngle >= 180) {
+          paperOpacity = 1;
+        } else {
+          // 90~180도: 0 → 1
+          paperOpacity = (coverRotateAngle - 90) / 90;
+        }
+        paper.style.opacity = paperOpacity;
       }
+
+      window.addEventListener("scroll", onScroll);
+      window.addEventListener("load", onScroll);
+      window.addEventListener("resize", onScroll);
 
       // ===== 카운트다운 타이머 (공통) =====
       const tzButtons = document.querySelectorAll(".tz-pill");
@@ -1154,10 +752,10 @@
   </body>
   <script
     type="module"
-    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    src="imagesttps://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
   ></script>
   <script
     nomodule
-    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    src="imagesttps://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
   ></script>
 </html>
