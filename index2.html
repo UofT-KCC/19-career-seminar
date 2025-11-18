@@ -613,7 +613,7 @@
         </div>
       </div>
     </section>
-    <section class="after-paper-background"></section>
+    <section class="after-paper-background" id="after"></section>
 
     <script>
       const imgGroup = document.querySelector(".envelope-img-group");
@@ -700,6 +700,16 @@
       window.addEventListener("scroll", onScroll);
       window.addEventListener("load", onScroll);
       window.addEventListener("resize", onScroll);
+
+      const afterPaper = document.getElementById("after");
+
+      console.log(paper.offsetHeight)
+      console.log(window.innerHeight * 3.5)
+
+      if (window.innerHeight * 2 < paper.offsetHeight) {
+        afterPaper.style.height = '330vmin'
+        console.log('height adusted')
+      }
 
       // ===== 카운트다운 타이머 (공통) =====
       const tzButtons = document.querySelectorAll(".tz-pill");
