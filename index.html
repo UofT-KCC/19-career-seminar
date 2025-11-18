@@ -462,7 +462,7 @@
 
       .scroll-hint {
         position: absolute;
-        bottom: 36px;
+        top: 85%;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
@@ -660,6 +660,7 @@
       const envCoverContainer = document.getElementById("env-cover-container");
       const sealingWax = document.getElementById("sealing-wax");
       const paper = document.getElementById("paper");
+      const scrollHint = document.getElementById("scroll-hint");
 
       // 모바일 체크
       const isMobile = window.innerWidth <= 768;
@@ -686,6 +687,20 @@
         const groupProgress = Math.min(totalProgress * 2, 1);
         const groupRotateAngle = groupProgress * 180;
         imgGroup.style.transform = `rotateX(${groupRotateAngle}deg)`;
+
+        // scroll-hint opacity: 0~20도 사이에서 1 → 0
+        let hintOpacity = 1;
+        if (groupRotateAngle <= 0) {
+          hintOpacity = 1;
+        } else if (groupRotateAngle >= 20) {
+          hintOpacity = 0;
+        } else {
+          // 0~20도: 1 → 0
+          hintOpacity = 1 - groupRotateAngle / 20;
+        }
+        if (scrollHint) {
+          scrollHint.style.opacity = hintOpacity;
+        }
 
         // 90도 이상 회전하면 env-back 숨기기
         if (groupRotateAngle >= 90) {
