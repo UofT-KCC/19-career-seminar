@@ -696,9 +696,9 @@
       const afterPaper = document.getElementById("after");
 
       console.log(paper.offsetHeight)
-      console.log(window.innerHeight * 2.5)
+      console.log(window.innerHeight * 3.5)
 
-      if (window.innerHeight * 3.5 < paper.offsetHeight * 0.6) {
+      if (window.innerHeight * 2 < paper.offsetHeight) {
         afterPaper.style.height = '400vh'
         console.log('height adusted')
       }
