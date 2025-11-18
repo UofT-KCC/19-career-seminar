@@ -468,6 +468,46 @@
         height: 200vh;
         background: linear-gradient(to bottom, #fffbf4, #f5f0e8);
       }
+
+
+      .scroll-hint {
+        position: absolute;
+        bottom: 36px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.82);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        opacity: 1;
+        pointer-events: none;
+        animation: scrollHintBounce 1.4s ease-in-out infinite;
+        transition: opacity 0.25s ease;
+      }
+
+      .scroll-hint.hidden {
+        opacity: 0;
+      }
+
+      .scroll-hint-icon {
+        font-size: 1.4rem;
+      }
+
+      @keyframes scrollHintBounce {
+        0% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(6px);
+        }
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+      }
     </style>
   </head>
   <body>
@@ -493,6 +533,13 @@
         </div>
         <div class="envelope-item envelope-center" id="sealing-wax-container">
           <img src="images/sealing-wax.png" id="sealing-wax" />
+        </div>
+        <div class="scroll-hint" id="scroll-hint">
+          <span>SCROLL DOWN</span>
+          <ion-icon
+            name="chevron-down-outline"
+            class="scroll-hint-icon"
+          ></ion-icon>
         </div>
         <div class="envelope-center" id="paper">
           <div class="paper-inner">
@@ -789,10 +836,10 @@
   </body>
   <script
     type="module"
-    src="imagesttps://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
   ></script>
   <script
     nomodule
-    src="imagesttps://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
   ></script>
 </html>
