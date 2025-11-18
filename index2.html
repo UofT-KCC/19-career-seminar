@@ -38,8 +38,8 @@
       body {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Pretendard",
           "Noto Sans KR", sans-serif;
-        background: linear-gradient(to bottom, #2A2F36, #2A2F36);
-        color: #3a3a3a;
+        background: radial-gradient(circle at top, #0a4c9c, #021933);
+        color: #f3f6ff;
         width: 100svw;
         min-height: 100dvh;
         min-height: 100svh;
@@ -110,13 +110,13 @@
       #paper {
         width: 1240px;
         height: max-content;
-        background: #0f0f0f;
+        background: #fffdf7;
         border-radius: 6px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         border-bottom-left-radius: 28px;
         border-bottom-right-radius: 28px;
         transform: translate(-50%, -80%) scale(0.6) rotateX(180deg);
-        background-color: #f5f0e8;
+        background-color: white;
         z-index: 2;
       }
 
@@ -131,18 +131,16 @@
       .paper-inner {
         position: relative;
         padding: 52px 16px 20px;
-        color: #0f0f0f;
       }
 
       .invite-card {
         width: 100%;
-        background: radial-gradient(circle at top, #f5f0e8 0%, #0a4c9c 15%, #021933 100%);
+        background: #fffbf4;
         border-radius: 24px;
-        background-clip: padding-box;
         border: 1px solid rgba(216, 203, 176, 0.7);
         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
-        padding: 40% 12px 28px;
-        color: #ffffff;
+        padding: 20% 12px 28px;
+        color: #3a3a3a;
       }
 
       .invite-header {
@@ -155,24 +153,19 @@
       }
 
       .invite-logo {
-        position: absolute;
-        left: -3%;
-        top: 350px;
-        width: 1200px;
+        width: 480px;
         height: auto;
         margin: 0 auto;
-        opacity: 0.1;
-        filter: brightness(1) drop-shadow(0 4px 4px rgba(255, 255, 255));
-        z-index:0;
+        opacity: 1;
+        filter: brightness(0.6) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
       }
 
       .invite-badge {
         font-size: 3.2rem;
         letter-spacing: 0.16em;
         text-transform: uppercase;
-        color: #ffffff;
+        color: #99907a;
         margin-bottom: 4px;
-        z-index: 3;
       }
 
       .invite-theme {
@@ -182,8 +175,7 @@
         letter-spacing: 0em;
         line-height: 1em;
         margin: 60px 0 120px;
-        color: #ffffff;
-        z-index: 3;
+        color: #16345c;
       }
 
       .invite-meta {
@@ -191,7 +183,7 @@
         font-size: 2.8rem;
         line-height: 1.6;
         letter-spacing: 0.08em;
-        color: #ffffff;
+        color: #7f6c4d;
       }
 
       .invite-body {
@@ -201,7 +193,7 @@
       .invite-intro-ko {
         font-size: 2.8rem;
         line-height: 1.7;
-        color: #ffffff;
+        color: #6b665a;
         margin: 100px 0;
       }
 
@@ -211,9 +203,9 @@
         margin: 0 auto 24px;
         background: linear-gradient(
           90deg,
-          rgba(255, 255, 255, 0.1),
-          #ffffff,
-          rgba(255, 255, 255, 0.1)
+          rgba(182, 162, 124, 0.1),
+          #b6a27c,
+          rgba(182, 162, 124, 0.1)
         );
       }
 
@@ -221,7 +213,7 @@
         font-size: 6.4rem;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: #ffffff;
+        color: #8d7a55;
         margin: 80px 0 60px;
       }
 
@@ -244,17 +236,17 @@
         width: 136px;
         height: 136px;
         border-radius: 999px;
-        border: 4px solid #ffffff;
+        border: 4px solid #b29a70;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 600;
         font-size: 4.2rem;
-        color: #ffffff;
+        color: #7b643c;
         margin: 0 auto;
         margin-top: 4px;
         flex-shrink: 0;
-        background: transparent;
+        background: #fffdf7;
       }
 
       .schedule-text-block {
@@ -265,16 +257,16 @@
       .schedule-heading {
         font-size: 5rem;
         font-weight: 600;
-        color: #ffffff;
+        color: #3f3a32;
         line-height: 1.2;
         text-align: center;
         margin-bottom: 20px;
       }
 
       .schedule-desc {
-        font-size: 3rem;
+        font-size: 2.8rem;
         font-weight: 400;
-        color: #ffffff;
+        color: #7a7466;
         line-height: 1.6;
         text-align: center;
       }
@@ -289,12 +281,12 @@
       .schedule-line {
         flex: 1;
         height: 4px;
-        background: #ffffff;
+        background: #b6a27c;
       }
 
       .schedule-logo {
         object-fit: contain;
-        filter: brightness(0) invert(1);
+        filter: brightness(0) invert(0.2);
         opacity: 0.5;
       }
 
@@ -332,21 +324,21 @@
         padding: 24px 64px;
         border-radius: 999px;
         cursor: pointer;
-        color: #51432b;
+        color: #a59a84;
         font-weight: 500;
         transition: background 0.16s ease, color 0.16s ease,
           box-shadow 0.16s ease;
       }
 
       .tz-pill.active {
-        background: rgba(255, 255, 255);
-        color: #021933;
+        background: #ffffff;
+        color: #51432b;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
       }
 
       .countdown-meta {
         font-size: 4rem;
-        color: #ffffff;
+        color: #8b7a60;
         margin: 20px 0 80px;
       }
 
@@ -364,24 +356,24 @@
       .countdown-label {
         font-size: 2.8rem;
         letter-spacing: 0.15em;
-        color: #ffffff;
+        color: #b0a187;
         margin-bottom: 4px;
       }
 
       .countdown-value {
         font-family: "Playfair Display", "Times New Roman", serif;
         font-size: 7.2rem;
-        color: #ffffff;
+        color: #333132;
       }
 
       .countdown-caption {
         font-size: 3.52rem;
-        color: #ffffff;
+        color: #746a5a;
         margin: 60px 0 100px;
       }
 
       .countdown-caption span {
-        color: #ffffff;
+        color: #c2873c;
         font-weight: 600;
       }
 
@@ -464,11 +456,9 @@
 
       .after-paper-background {
         width: 0%;
-        min-height: 250vh;
-        height: 200vh;
-        background: linear-gradient(to bottom, #fffbf4, #f5f0e8);
+        min-height: 150vh;
+        background: radial-gradient(circle at top, #0a4c9c, #021933);
       }
-
 
       .scroll-hint {
         position: absolute;
@@ -763,6 +753,7 @@
       window.addEventListener("load", onScroll);
       window.addEventListener("resize", onScroll);
 
+
       const afterPaper = document.getElementById("after");
 
       console.log(paper.offsetHeight)
@@ -847,6 +838,8 @@
 
       updateCountdown();
       setInterval(updateCountdown, 1000);
+
+    
     </script>
   </body>
   <script
