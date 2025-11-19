@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="You are invited! Join the 19th UTKCC Career Seminar." />
-    <title>UTKCC Career Seminar</title>
+    <title>Fail Forward - UTKCC Career Seminar</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -62,14 +62,14 @@
       }
 
       html {
-        background: #021933;
+        background: #2A2F36;
       }
 
       body {
         font-family: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont,
           "Noto Sans KR", sans-serif;
-        background: radial-gradient(circle at top, #0a4c9c, #021933);
-        color: #f3f6ff;
+        background: linear-gradient(to bottom, #616c7d, #434b56 20%,#2A2F36 100%);
+        color: #3a3a3a;
         width: 100svw;
         min-height: 100dvh;
         min-height: 100svh;
@@ -140,13 +140,13 @@
       #paper {
         width: 1240px;
         height: max-content;
-        background: #fffdf7;
+        background: #0f0f0f;
         border-radius: 6px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         border-bottom-left-radius: 28px;
         border-bottom-right-radius: 28px;
         transform: translate(-50%, -80%) scale(0.6) rotateX(180deg);
-        background-color: white;
+        background-color: #f5f0e8;
         z-index: 2;
       }
 
@@ -161,16 +161,18 @@
       .paper-inner {
         position: relative;
         padding: 52px 16px 20px;
+        color: #0f0f0f;
       }
 
       .invite-card {
         width: 100%;
-        background: #fffbf4;
+        background: radial-gradient(circle at top, #f5f0e8 0%, #0a4c9c 15%, #021933 100%);
         border-radius: 24px;
+        background-clip: padding-box;
         border: 1px solid rgba(216, 203, 176, 0.7);
         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
-        padding: 20% 12px 28px;
-        color: #3a3a3a;
+        padding: 40% 12px 28px;
+        color: #F0F4FF;
       }
 
       .invite-header {
@@ -183,29 +185,35 @@
       }
 
       .invite-logo {
-        width: 480px;
+        position: absolute;
+        left: -3%;
+        top: 350px;
+        width: 1200px;
         height: auto;
         margin: 0 auto;
-        opacity: 1;
-        filter: brightness(0.6) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+        opacity: 0.1;
+        filter: brightness(1) drop-shadow(0 4px 4px rgba(255, 255, 255));
+        z-index:0;
       }
 
       .invite-badge {
         font-size: 3.2rem;
-        letter-spacing: 0.16em;
+        letter-spacing: 0.04em;
         text-transform: uppercase;
-        color: #99907a;
+        color: #F0F4FF;
         margin-bottom: 4px;
+        z-index: 3;
       }
 
       .invite-theme {
         font-family: "Playfair Display", "Times New Roman", serif;
-        font-size: 14rem;
+        font-size: 13.5rem;
         font-style: italic;
         letter-spacing: 0em;
         line-height: 1em;
-        margin: 60px 0 120px;
-        color: #16345c;
+        margin: 90px 0 120px;
+        color: #F0F4FF;
+        z-index: 3;
       }
 
       .invite-meta {
@@ -213,7 +221,7 @@
         font-size: 2.8rem;
         line-height: 1.6;
         letter-spacing: 0.08em;
-        color: #7f6c4d;
+        color: #b1bdcd;
       }
 
       .invite-body {
@@ -223,7 +231,7 @@
       .invite-intro-ko {
         font-size: 2.8rem;
         line-height: 1.7;
-        color: #6b665a;
+        color: #F0F4FF;
         margin: 100px 0;
       }
 
@@ -233,18 +241,18 @@
         margin: 0 auto 24px;
         background: linear-gradient(
           90deg,
-          rgba(182, 162, 124, 0.1),
-          #b6a27c,
-          rgba(182, 162, 124, 0.1)
+          rgba(255, 255, 255, 0.1),
+          #F0F4FF,
+          rgba(255, 255, 255, 0.1)
         );
       }
 
       .schedule-title {
-        font-size: 6.4rem;
-        letter-spacing: 0.18em;
+        font-size: 7.5rem;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: #8d7a55;
-        margin: 80px 0 60px;
+        color: #F0F4FF;
+        margin: 80px 0 90px;
       }
 
       .schedule-list {
@@ -266,17 +274,17 @@
         width: 136px;
         height: 136px;
         border-radius: 999px;
-        border: 4px solid #b29a70;
+        border: 4px solid #F0F4FF;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 600;
         font-size: 4.2rem;
-        color: #7b643c;
+        color: #F0F4FF;
         margin: 0 auto;
         margin-top: 4px;
         flex-shrink: 0;
-        background: #fffdf7;
+        background: transparent;
       }
 
       .schedule-text-block {
@@ -287,36 +295,42 @@
       .schedule-heading {
         font-size: 5rem;
         font-weight: 600;
-        color: #3f3a32;
+        color: #F0F4FF;
         line-height: 1.2;
         text-align: center;
-        margin-bottom: 20px;
+        margin: 20px 0;
       }
 
       .schedule-desc {
-        font-size: 2.8rem;
+        font-size: 3rem;
         font-weight: 400;
-        color: #7a7466;
+        color: #F0F4FF;
         line-height: 1.6;
         text-align: center;
+        margin: 30px 0;
+      }
+
+      .schedule-desc span {
+        text-decoration: underline;
+        text-underline-offset: 10px;
       }
 
       .schedule-separator {
         display: flex;
         align-items: center;
         gap: 10px;
-        padding: 10px 60px 6px;
+        padding: 10px 90px 30px;
       }
 
       .schedule-line {
         flex: 1;
         height: 4px;
-        background: #b6a27c;
+        background: #F0F4FF;
       }
 
       .schedule-logo {
         object-fit: contain;
-        filter: brightness(0) invert(0.2);
+        filter: brightness(0) invert(1);
         opacity: 0.5;
       }
 
@@ -331,7 +345,7 @@
       }
 
       .countdown-section {
-        margin-top: 36px;
+        margin-top: 90px;
         padding-top: 26px;
         border-top: 1px solid rgba(216, 203, 176, 0.6);
         text-align: center;
@@ -342,9 +356,9 @@
         align-items: center;
         padding: 2px;
         border-radius: 999px;
-        background: #f4efe4;
+        background: #c6c9cb;
         border: 1px solid rgba(216, 203, 176, 0.9);
-        margin: 60px 0;
+        margin: 90px 0;
       }
 
       .tz-pill {
@@ -354,29 +368,29 @@
         padding: 24px 64px;
         border-radius: 999px;
         cursor: pointer;
-        color: #a59a84;
+        color: #51432bbb;
         font-weight: 500;
         transition: background 0.16s ease, color 0.16s ease,
           box-shadow 0.16s ease;
       }
 
       .tz-pill.active {
-        background: #ffffff;
-        color: #51432b;
+        background: rgba(255, 255, 255);
+        color: #021933;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
       }
 
       .countdown-meta {
         font-size: 4rem;
-        color: #8b7a60;
+        color: #F0F4FF;
         margin: 20px 0 80px;
       }
 
       .countdown-grid {
         display: flex;
         justify-content: center;
-        gap: 60px;
-        margin-bottom: 60px;
+        gap: 90px;
+        margin-bottom: 90px;
       }
 
       .countdown-col {
@@ -386,24 +400,24 @@
       .countdown-label {
         font-size: 2.8rem;
         letter-spacing: 0.15em;
-        color: #b0a187;
+        color: #9AA4B2;
         margin-bottom: 4px;
       }
 
       .countdown-value {
         font-family: "Playfair Display", "Times New Roman", serif;
         font-size: 7.2rem;
-        color: #333132;
+        color: #F0F4FF;
       }
 
       .countdown-caption {
         font-size: 3.52rem;
-        color: #746a5a;
-        margin: 60px 0 100px;
+        color: #F0F4FF;
+        margin: 90px 0 100px;
       }
 
       .countdown-caption span {
-        color: #c2873c;
+        color: #9AA4B2;
         font-weight: 600;
       }
 
@@ -486,13 +500,14 @@
 
       .after-paper-background {
         width: 0%;
-        min-height: 150vh;
-        background: radial-gradient(circle at top, #0a4c9c, #021933);
+        min-height: 250vh;
+        height: 200vh;
       }
+
 
       .scroll-hint {
         position: absolute;
-        top: 85%;
+        top: 90%;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
@@ -527,6 +542,54 @@
         100% {
           transform: translateX(-50%) translateY(0);
         }
+      }
+
+      .cta-button {
+        display: block;
+        font-size: 3rem;
+        font-weight: 600;
+        background-color: #1b1f23;
+        background-color: transparent;
+        color: #FFF;
+        padding: 30px 60px;
+        border: 3px solid #FFF;
+        border-radius: 24px;
+        margin: 120px auto 30px;
+        width: fit-content;
+        opacity: 0.9;
+        transition: 100ms;
+        box-sizing: border-box;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .cta-button:hover {
+        outline: 3px solid #FFF;
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 0.08);
+      }
+
+      .passcode-box {
+        font-size: 2.4rem;
+        color: #FFF;
+        padding: 20px 40px;
+        border-radius: 16px;
+        margin: 0 auto 100px;
+        width: fit-content;
+        text-align: center;
+      }
+
+      .passcode-box .label {
+        font-size: 2rem;
+        opacity: 0.8;
+        margin-bottom: 8px;
+      }
+
+      .passcode-box .code {
+        font-size: 2.6rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        font-family: "Paperlogy", monospace;
       }
     </style>
   </head>
@@ -570,18 +633,19 @@
                 alt="UTKCC Logo"
                 class="invite-logo"
               />
-              <p class="invite-badge">UTKCC CAREER SEMINAR</p>
+              <p class="invite-badge">UTKCC<br /> CAREER SEMINAR</p>
               <h1 class="invite-theme">FAIL <br /> FORWARD</h1>
               <p class="invite-meta">
-                11월 22일 오후 8시 EST / 11월 23일 오전 10시 KST
-                <br />
+                11월 22일 오후 08시 EST<br/>
+                <span style="display: block; line-height: 0.5">•</span>
+                11월 23일 오전 10시 KST<br />
                 | @Zoom
               </p>
             </header>
 
             <section class="invite-body">
               <p class="invite-intro-ko">
-                선배님들의 진짜 이야기와 함께<br />
+                선배님들의 <b>진짜 이야기</b>와 함께,<br />
                 실패를 앞으로 나아가는 힘으로 바꾸는 시간을 준비했습니다.
               </p>
 
@@ -594,8 +658,8 @@
                   <div class="schedule-text-block">
                     <h3 class="schedule-heading">General Panel Side Talk</h3>
                     <p class="schedule-desc">
-                      선배님들의 실패 경험과 <br/>그 속에서 얻은 인사이트를 나누는
-                      패널 세션
+                      선배님들의 실패 경험과 <br/>
+                      그 속에서 얻은 인사이트를 나누는 <span>패널 세션</span>
                     </p>
                   </div>
                 </article>
@@ -616,7 +680,7 @@
                       Career-Specific <br/>Breakout Room
                     </h3>
                     <p class="schedule-desc">
-                      소규모 네트워킹과 각 분야별 Fireside Chat
+                      소규모 네트워킹과 각 분야별 <span>Fireside Chat</span>
                     </p>
                   </div>
                 </article>
@@ -635,8 +699,8 @@
                   <div class="schedule-text-block">
                     <h3 class="schedule-heading">Insight Talk</h3>
                     <p class="schedule-desc">
-                      실제 사례를 바탕으로 선배님들의 조언과<br />
-                      커리어 인사이트를 들어보는 시간
+                      실제 사례를 바탕으로 선배님들의 조언과 <br/>
+                      <span>커리어 인사이트</span>를 알아보는 시간
                     </p>
                   </div>
                 </article>
@@ -673,6 +737,13 @@
                   <p class="countdown-caption">
                     세미나까지 <span id="cd-days-text">0</span>일 남았습니다.
                   </p>
+                  <a href="https://utoronto.zoom.us/j/86740431211" target="_blank" rel="noopener noreferrer" class="cta-button">
+                    참여하기
+                  </a>
+                  <div class="passcode-box">
+                    <div class="label">패스코드</div>
+                    <div class="code">UTKCC</div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -770,7 +841,6 @@
       window.addEventListener("load", onScroll);
       window.addEventListener("resize", onScroll);
 
-
       const afterPaper = document.getElementById("after");
 
       console.log(paper.offsetHeight)
@@ -820,7 +890,10 @@
           cdHours.textContent = "00";
           cdMins.textContent = "00";
           cdSecs.textContent = "00";
-          cdDaysText.textContent = "0";
+          const captionElement = document.querySelector(".countdown-caption");
+          if (captionElement) {
+            captionElement.innerHTML = "지금, 참여하세요.";
+          }
           countdownMeta.textContent = eventDates[currentTz].label;
           return;
         }
@@ -835,7 +908,20 @@
         cdHours.textContent = pad2(hours);
         cdMins.textContent = pad2(mins);
         cdSecs.textContent = pad2(secs);
-        cdDaysText.textContent = days;
+
+        const captionElement = document.querySelector(".countdown-caption");
+        if (captionElement) {
+          if (days === 0 && hours === 0 && mins === 0) {
+            captionElement.innerHTML = `세미나까지 <span>${secs}</span>초 남았습니다.`;
+          } else if (days === 0 && hours === 0) {
+            captionElement.innerHTML = `세미나까지 <span>${mins}</span>분 남았습니다.`;
+          } else if (days === 0) {
+            captionElement.innerHTML = `세미나까지 <span>${hours}</span>시간 남았습니다.`;
+          } else {
+            captionElement.innerHTML = `세미나까지 <span>${days}</span>일 남았습니다.`;
+          }
+        }
+
         countdownMeta.textContent = eventDates[currentTz].label;
       }
 
@@ -852,8 +938,6 @@
 
       updateCountdown();
       setInterval(updateCountdown, 1000);
-
-    
     </script>
   </body>
   <script
